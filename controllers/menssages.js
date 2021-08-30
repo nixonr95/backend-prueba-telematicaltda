@@ -37,7 +37,20 @@ const getMensajeRecibidos = async (req, res = response) => {
     })
 }
 
+const getMensajesEnviados = async (req, res = response) => {
+    
+    const uidEmisor = req.params.id;
+    const mensajes = await Mensaje.find({ uidEmisor: uidEmisor })
+                                
+
+    res.json({
+        ok: true,
+        mensajes
+    })
+}
+
 module.exports = { 
     enviarMensaje,
-    getMensajeRecibidos
+    getMensajeRecibidos,
+    getMensajesEnviados
 }

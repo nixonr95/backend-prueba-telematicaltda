@@ -3,12 +3,14 @@ const {check} = require('express-validator');
 
 const {validarJWT} = require('../middlewares/validar-jwt');
 const {validarCampos} = require('../middlewares/validar-campos');
-const { enviarMensaje, getMensajeRecibidos } = require('../controllers/menssages');
+const { enviarMensaje, getMensajeRecibidos, getMensajesEnviados } = require('../controllers/menssages');
 
 const router = Router(); 
 // router.use(validarJWT);
 
 router.get('/:id', getMensajeRecibidos);
+
+router.get('/enviados/:id', getMensajesEnviados);
 
 router.post(
     '/', 
